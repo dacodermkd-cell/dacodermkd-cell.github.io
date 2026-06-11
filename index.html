@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mitul Kumar — NLP & LLM Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#111118;
+  --bg3:#1a1a24;
+  --border:#2a2a3a;
+  --text:#e8e8f0;
+  --muted:#888899;
+  --accent:#7c6cfc;
+  --accent2:#a78bfa;
+  --green:#4ade80;
+  --card:#14141e;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* ── Noise overlay ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:.4
+}
+
+/* ── Nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 60px;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,10,15,0.8);backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .3s
+}
+nav.scrolled{border-color:var(--border)}
+.nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:-.02em}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* ── Hero ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:100px 60px 60px;position:relative;overflow:hidden
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(124,108,252,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,108,252,.06) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%)
+}
+.hero-glow{
+  position:absolute;top:20%;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(124,108,252,.15) 0%, transparent 70%);
+  pointer-events:none
+}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(124,108,252,.1);border:1px solid rgba(124,108,252,.3);
+  color:var(--accent2);font-size:.8rem;font-weight:500;
+  padding:6px 14px;border-radius:100px;margin-bottom:28px;
+  font-family:'JetBrains Mono',monospace
+}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.4)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(74,222,128,0)}}
+h1{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
+h1 .gradient{
+  background:linear-gradient(135deg, #fff 0%, var(--accent2) 50%, var(--accent) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.hero-sub{font-size:1.15rem;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:36px}
+.hero-sub strong{color:var(--text);font-weight:500}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);color:#fff;text-decoration:none;
+  padding:12px 24px;border-radius:8px;font-weight:600;font-size:.9rem;
+  transition:all .2s;border:none;cursor:pointer
+}
+.btn-primary:hover{background:#6b5ce7;transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,108,252,.3)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--text);text-decoration:none;
+  padding:12px 24px;border-radius:8px;font-weight:500;font-size:.9rem;
+  border:1px solid var(--border);transition:all .2s
+}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.hero-stats{
+  display:flex;gap:40px;margin-top:60px;padding-top:40px;
+  border-top:1px solid var(--border)
+}
+.stat-num{font-size:1.8rem;font-weight:700;color:var(--text)}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:2px}
+
+/* ── Section base ── */
+section{padding:80px 60px;position:relative;z-index:1}
+.section-label{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  color:var(--accent);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:12px
+}
+.section-title{font-size:2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.section-sub{color:var(--muted);font-size:.95rem;margin-bottom:48px}
+
+/* ── About ── */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-text{font-size:1rem;color:var(--muted);line-height:1.8}
+.about-text p{margin-bottom:16px}
+.about-text strong{color:var(--text);font-weight:500}
+.about-links{display:flex;flex-direction:column;gap:12px}
+.link-card{
+  display:flex;align-items:center;gap:14px;
+  background:var(--card);border:1px solid var(--border);
+  padding:14px 18px;border-radius:10px;text-decoration:none;
+  color:var(--text);transition:all .2s
+}
+.link-card:hover{border-color:var(--accent);transform:translateX(4px)}
+.link-icon{width:36px;height:36px;background:rgba(124,108,252,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.link-info{flex:1}
+.link-name{font-size:.9rem;font-weight:600}
+.link-handle{font-size:.8rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.link-arrow{color:var(--muted);font-size:.9rem}
+
+/* ── Publications ── */
+#publications{background:var(--bg)}
+.pub-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:28px;margin-bottom:16px;
+  transition:all .3s;position:relative;overflow:hidden
+}
+.pub-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(124,108,252,.05) 0%, transparent 60%);
+  opacity:0;transition:opacity .3s
+}
+.pub-card:hover{border-color:rgba(124,108,252,.4);transform:translateY(-2px)}
+.pub-card:hover::before{opacity:1}
+.pub-badge{
+  display:inline-block;font-size:.75rem;font-weight:600;
+  padding:3px 10px;border-radius:100px;margin-bottom:14px;
+  font-family:'JetBrains Mono',monospace
+}
+.badge-review{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.badge-prep{background:rgba(74,222,128,.1);color:#4ade80;border:1px solid rgba(74,222,128,.3)}
+.pub-title{font-size:1rem;font-weight:600;line-height:1.5;margin-bottom:8px}
+.pub-authors{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+.pub-venue{font-size:.85rem;color:var(--accent2);font-weight:500}
+
+/* ── Projects ── */
+#projects{background:var(--bg2)}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.project-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:28px;
+  transition:all .3s;position:relative;overflow:hidden
+}
+.project-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s
+}
+.project-card:hover{border-color:rgba(124,108,252,.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.project-card:hover::after{transform:scaleX(1)}
+.project-icon{
+  width:44px;height:44px;background:rgba(124,108,252,.15);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:18px
+}
+.project-title{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.project-sub{font-size:.82rem;color:var(--accent2);margin-bottom:10px;font-weight:500}
+.project-desc{font-size:.88rem;color:var(--muted);line-height:1.65;margin-bottom:18px}
+.project-stats{display:flex;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.pstat{font-size:.78rem;font-family:'JetBrains Mono',monospace;color:var(--muted)}
+.pstat strong{color:var(--accent2)}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.tag{
+  font-size:.72rem;font-family:'JetBrains Mono',monospace;
+  background:rgba(124,108,252,.1);color:var(--accent2);
+  padding:3px 9px;border-radius:4px;border:1px solid rgba(124,108,252,.2)
+}
+.project-links{display:flex;gap:10px}
+.plink{
+  font-size:.8rem;color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:5px;
+  transition:color .2s;font-weight:500
+}
+.plink:hover{color:var(--accent2)}
+
+/* ── Skills ── */
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.skill-group{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:22px;transition:border-color .2s
+}
+.skill-group:hover{border-color:rgba(124,108,252,.3)}
+.skill-group-title{
+  font-size:.8rem;font-weight:600;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.08em;
+  font-family:'JetBrains Mono',monospace;margin-bottom:14px
+}
+.skill-items{display:flex;flex-wrap:wrap;gap:6px}
+.skill{
+  font-size:.78rem;background:var(--bg3);color:var(--text);
+  padding:4px 10px;border-radius:5px;border:1px solid var(--border)
+}
+
+/* ── Footer ── */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:40px 60px;display:flex;justify-content:space-between;
+  align-items:center;position:relative;z-index:1
+}
+.footer-left{font-size:.85rem;color:var(--muted)}
+.footer-left strong{color:var(--text)}
+.footer-right{font-size:.8rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+/* ── Scroll reveal ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="navbar">
+  <div class="nav-logo">mk<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#publications">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="mailto:dacodermkd@gmail.com">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span></span>
+      Open to research internships
+    </div>
+    <h1>
+      <span class="gradient">Mitul Kumar</span><br/>
+      NLP &amp; LLM Researcher
+    </h1>
+    <p class="hero-sub">
+      M.Tech at <strong>IIIT Allahabad</strong> building knowledge-augmented LLM systems —
+      ontology-grounded knowledge graphs, SPARQL-backed RAG, and LoRA fine-tuning
+      across biomedical and cross-domain AI settings.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="mailto:dacodermkd@gmail.com" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Papers (incl. EMNLP under review)</div>
+      </div>
+      <div>
+        <div class="stat-num">188</div>
+        <div class="stat-label">Ontology bridge assertions</div>
+      </div>
+      <div>
+        <div class="stat-num">308K+</div>
+        <div class="stat-label">Biomedical triples extracted</div>
+      </div>
+      <div>
+        <div class="stat-num">14B</div>
+        <div class="stat-label">Fine-tuned model (HuggingFace)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="section-label">// about</div>
+  <div class="section-title reveal">Who I am</div>
+  <div class="section-sub reveal">Background, interests, and where to find me</div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I am an M.Tech researcher in Data Engineering at <strong>IIIT Allahabad</strong>, working at the intersection of knowledge representation, large language models, and retrieval-augmented generation.</p>
+      <p>My research spans two directions: <strong>biomedical knowledge graph construction</strong> using ontology-guided multi-LLM pipelines with uncertainty quantification, and <strong>cross-domain philosophical-AI mapping</strong> — the first formal ontology connecting Indian epistemology (Nyaya, Mimamsa, Vedanta) to modern AI concepts.</p>
+      <p>I build systems end-to-end: from OWL 2 ontology design and SPARQL-backed retrieval to LoRA fine-tuning at 14B scale and public deployment. I am currently looking for <strong>paid remote research internships</strong>.</p>
+    </div>
+    <div class="about-links reveal reveal-delay-1">
+      <a href="https://github.com/dacodermkd-cell" target="_blank" class="link-card">
+        <div class="link-icon">⌥</div>
+        <div class="link-info">
+          <div class="link-name">GitHub</div>
+          <div class="link-handle">dacodermkd-cell</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://huggingface.co/scaredmajor7300" target="_blank" class="link-card">
+        <div class="link-icon">🤗</div>
+        <div class="link-info">
+          <div class="link-name">HuggingFace</div>
+          <div class="link-handle">scaredmajor7300</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://www.linkedin.com/in/mitul-kumar-dayal" target="_blank" class="link-card">
+        <div class="link-icon">in</div>
+        <div class="link-info">
+          <div class="link-name">LinkedIn</div>
+          <div class="link-handle">mitul-kumar-dayal</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="mailto:dacodermkd@gmail.com" class="link-card">
+        <div class="link-icon">@</div>
+        <div class="link-info">
+          <div class="link-name">Email</div>
+          <div class="link-handle">dacodermkd@gmail.com</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Publications -->
+<section id="publications">
+  <div class="section-label">// research</div>
+  <div class="section-title reveal">Publications</div>
+  <div class="section-sub reveal">Peer-reviewed research and work in progress</div>
+
+  <div class="pub-card reveal">
+    <div class="pub-badge badge-review">Under Review — EMNLP 2025 (CORE A*)</div>
+    <div class="pub-title">OMKG: Ontology-Guided Multi-LLM Knowledge Graph Construction with Uncertainty Quantification for Biomedical Literature Mining</div>
+    <div class="pub-authors">Mitul Kumar, Sadhana Tiwari, Sonali Agarwal, Naveen Saini</div>
+    <div class="pub-venue">EMNLP 2025 — Empirical Methods in Natural Language Processing</div>
+  </div>
+
+  <div class="pub-card reveal reveal-delay-1">
+    <div class="pub-badge badge-prep">In Preparation — IEEE DSAA 2026</div>
+    <div class="pub-title">Phil-AI: An Ontology-Augmented Framework for Cross-Domain Mapping Between Western Philosophy, Indian Epistemology, and Artificial Intelligence</div>
+    <div class="pub-authors">Mitul Kumar, Sadhana Tiwari, Sonali Agarwal</div>
+    <div class="pub-venue">Target: IEEE DSAA 2026 — Data Science and Advanced Analytics</div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-label">// projects</div>
+  <div class="section-title reveal">What I've Built</div>
+  <div class="section-sub reveal">End-to-end systems combining structured knowledge with neural language models</div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-icon">🏛️</div>
+      <div class="project-title">Phil-AI</div>
+      <div class="project-sub">Philosophy × AI Cross-Domain Ontology</div>
+      <div class="project-desc">The first formal OWL 2 ontology mapping Western philosophy, Indian epistemology (Nyaya, Mimamsa, Vedanta), and AI. Paired with a public RAG system and fine-tuned 14B model.</div>
+      <div class="project-stats">
+        <div class="pstat"><strong>1,960</strong> triples</div>
+        <div class="pstat"><strong>188</strong> bridge assertions</div>
+        <div class="pstat"><strong>1,134</strong> training examples</div>
+        <div class="pstat">loss <strong>0.409</strong></div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">OWL 2 DL</span>
+        <span class="tag">LoRA</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Groq API</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/dacodermkd-cell/phil-ai" target="_blank" class="plink">⌥ GitHub ↗</a>
+        <a href="https://huggingface.co/scaredmajor7300/phil-ai-v10" target="_blank" class="plink">🤗 Model ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-icon">🧬</div>
+      <div class="project-title">OMKG</div>
+      <div class="project-sub">Ontology-Guided Multi-LLM Biomedical KG</div>
+      <div class="project-desc">OntoPro pipeline grounds biomedical triple extraction in UMLS/SNOMED CT before extraction. Evaluation layer decomposes epistemic and aleatoric uncertainty across 5 LLMs.</div>
+      <div class="project-stats">
+        <div class="pstat"><strong>680+</strong> papers</div>
+        <div class="pstat"><strong>308,735</strong> raw triples</div>
+        <div class="pstat"><strong>117K</strong> nodes</div>
+        <div class="pstat"><strong>180K</strong> edges</div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Multi-LLM</span>
+        <span class="tag">UMLS</span>
+        <span class="tag">SPARQL</span>
+        <span class="tag">Jena/Fuseki</span>
+        <span class="tag">Uncertainty QA</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/dacodermkd-cell" target="_blank" class="plink">⌥ GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-icon">🏥</div>
+      <div class="project-title">Medical Transcription Classifier</div>
+      <div class="project-sub">35-class clinical note classification</div>
+      <div class="project-desc">Cleaned 2,600+ noisy clinical records with UMLS-based abbreviation expansion. Achieved 81% Macro-F1 across 35 medical specialties using TF-IDF + SVM.</div>
+      <div class="project-stats">
+        <div class="pstat"><strong>2,600+</strong> records</div>
+        <div class="pstat"><strong>81%</strong> Macro-F1</div>
+        <div class="pstat"><strong>35</strong> classes</div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">UMLS</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">spaCy</span>
+        <span class="tag">TF-IDF</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/dacodermkd-cell" target="_blank" class="plink">⌥ GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-3">
+      <div class="project-icon">🧫</div>
+      <div class="project-title">TriRNSC</div>
+      <div class="project-sub">Gene Expression Triclustering</div>
+      <div class="project-desc">Implemented the TriRNSC algorithm on S. cerevisiae yeast data (6,178 genes, 4 conditions). GO Term + KEGG pathway validation. Outperformed δ-TRIMAX and TRICLUSTER.</div>
+      <div class="project-stats">
+        <div class="pstat"><strong>6,178</strong> genes</div>
+        <div class="pstat"><strong>4</strong> conditions</div>
+        <div class="pstat"><strong>14</strong> time points</div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Gene Ontology</span>
+        <span class="tag">KEGG</span>
+        <span class="tag">MATLAB</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/dacodermkd-cell" target="_blank" class="plink">⌥ GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="section-label">// skills</div>
+  <div class="section-title reveal">Technical Stack</div>
+  <div class="section-sub reveal">Tools, frameworks, and domains</div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-items">
+        <span class="skill">Python</span><span class="skill">SQL</span>
+        <span class="skill">C</span><span class="skill">Java</span>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title">ML / NLP</div>
+      <div class="skill-items">
+        <span class="skill">HuggingFace</span><span class="skill">spaCy</span>
+        <span class="skill">Scikit-learn</span><span class="skill">TensorFlow</span>
+        <span class="skill">Unsloth</span>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-2">
+      <div class="skill-group-title">LLMs & RAG</div>
+      <div class="skill-items">
+        <span class="skill">LoRA / PEFT</span><span class="skill">RAG pipelines</span>
+        <span class="skill">Groq API</span><span class="skill">Ollama</span>
+        <span class="skill">GGUF</span><span class="skill">SFTTrainer</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Ontology & Semantic Web</div>
+      <div class="skill-items">
+        <span class="skill">OWL 2 DL</span><span class="skill">Protégé</span>
+        <span class="skill">SPARQL</span><span class="skill">rdflib</span>
+        <span class="skill">Jena/Fuseki</span><span class="skill">SKOS</span>
+        <span class="skill">ELK</span>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title">Data Engineering</div>
+      <div class="skill-items">
+        <span class="skill">Spark</span><span class="skill">Hadoop</span>
+        <span class="skill">Hive</span><span class="skill">Airflow</span>
+        <span class="skill">Kafka</span>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-2">
+      <div class="skill-group-title">Tools & Infra</div>
+      <div class="skill-items">
+        <span class="skill">Git</span><span class="skill">Linux</span>
+        <span class="skill">Streamlit</span><span class="skill">Supabase</span>
+        <span class="skill">PostgreSQL</span><span class="skill">MongoDB</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-left">
+    Built by <strong>Mitul Kumar</strong> · IIIT Allahabad · 2026
+  </div>
+  <div class="footer-right">dacodermkd@gmail.com</div>
+</footer>
+
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Typing effect in hero tag
+const tag = document.querySelector('.hero-tag');
+const texts = ['Open to research internships', 'NLP & LLM Researcher', 'IIIT Allahabad · M.Tech'];
+let ti = 0, ci = 0, deleting = false;
+const span = tag.querySelector('span');
+function type() {
+  const current = texts[ti];
+  if (!deleting) {
+    ci++;
+    span.textContent = current.slice(0, ci);
+    if (ci === current.length) { deleting = true; setTimeout(type, 2000); return; }
+  } else {
+    ci--;
+    span.textContent = current.slice(0, ci);
+    if (ci === 0) { deleting = false; ti = (ti + 1) % texts.length; }
+  }
+  setTimeout(type, deleting ? 40 : 80);
+}
+type();
+</script>
+</body>
+</html>
