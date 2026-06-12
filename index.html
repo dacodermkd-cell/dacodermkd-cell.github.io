@@ -152,6 +152,35 @@ footer{padding:36px 0;border-top:1px solid var(--rule)}
 .foot{display:flex;justify-content:space-between;
   font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--ink-soft)}
 
+/* ════════ CONTACT ════════ */
+.contact-box{border:1px solid var(--ink);border-radius:4px;background:#fff;
+  box-shadow:6px 6px 0 var(--paper2);padding:44px;text-align:center}
+.contact-line{font-size:1.05rem;color:var(--ink-soft);margin-bottom:22px}
+.contact-email{font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:clamp(1.3rem,3vw,2rem);letter-spacing:-.01em;
+  color:var(--ink);text-decoration:none;border-bottom:3px solid var(--red);
+  transition:color .15s}
+.contact-email:hover{color:var(--red)}
+.contact-actions{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#copy-email{cursor:pointer;background:none}
+
+/* ════════ MINI GAME ════════ */
+.game-panel{border:1px solid var(--ink);border-radius:4px;background:#fff;
+  overflow:hidden;box-shadow:6px 6px 0 var(--paper2)}
+.game-head{display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px;border-bottom:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--ink-soft)}
+.game-hud{display:flex;gap:18px}
+.game-hud b{color:var(--ink);font-weight:500}
+#gamecanvas{display:block;width:100%;height:380px;cursor:crosshair}
+.game-foot{padding:8px 14px;border-top:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink-soft);
+  display:flex;justify-content:space-between;align-items:center}
+#game-restart{font-family:'Archivo',sans-serif;font-weight:600;font-size:.74rem;
+  border:1px solid var(--ink);background:#fff;color:var(--ink);
+  padding:4px 12px;border-radius:3px;cursor:pointer;transition:box-shadow .15s}
+#game-restart:hover{box-shadow:2px 2px 0 var(--red)}
+
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
 .reveal.in{opacity:1;transform:none}
 
@@ -176,7 +205,7 @@ footer{padding:36px 0;border-top:1px solid var(--rule)}
       <a href="#research">research</a>
       <a href="#projects">projects</a>
       <a href="#skills">skills</a>
-      <a href="#" id="nav-mail">contact</a>
+      <a href="#contact">contact</a>
     </div>
   </div>
 </nav>
@@ -207,7 +236,7 @@ const DATA = {
     headline: `I map <em>knowledge</em> into machines.`,
     description: `M.Tech at <strong>IIIT Allahabad</strong>. I build knowledge-augmented
       LLM systems — ontology-grounded knowledge graphs, SPARQL-backed retrieval,
-      and LoRA fine-tuning.`
+      and LoRA fine-tuning at 14B scale.`
   },
 
   /* ── about: skills-first, technology-first ────────────────── */
@@ -219,7 +248,7 @@ const DATA = {
     `On the neural side, I build <strong>multi-LLM extraction pipelines</strong> with
      consensus scoring and epistemic/aleatoric uncertainty decomposition, generate
      instruction-tuning datasets programmatically from graph structures, and fine-tune
-     models. Retrieval-augmented generation ties the two
+     models at 14B scale with LoRA on A100s. Retrieval-augmented generation ties the two
      worlds together: graph context in, grounded responses out.`,
     `I ship what I build — <strong>Streamlit frontends, Groq-served inference, Supabase
      persistence</strong>, and models published openly on HuggingFace Hub.`
@@ -245,7 +274,7 @@ const DATA = {
       paper: {
         status: "UNDER REVIEW",
         venue: "EMNLP 2025 (CORE A*)",
-        authors: "Mitul Kumar, MD Inzamam, Dr. Triloki Pant, Dr. Sonali Agarwal, Dr. Naveen Saini, "
+        authors: "Mitul Kumar, Sadhana Tiwari, Sonali Agarwal, Naveen Saini"
       },
       stats: ["<b>680+</b> papers processed","<b>308,735</b> raw triples","<b>117K</b> nodes","<b>180K</b> edges"],
       links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
@@ -352,7 +381,6 @@ const DATA = {
    ╚══════════════════════════════════════════════════════════════╝ */
 const ID = DATA.identity;
 document.getElementById('nav-name').textContent = ID.name;
-document.getElementById('nav-mail').href = 'mailto:'+ID.email;
 document.getElementById('foot-left').textContent = '© 2026 '+ID.name+' · IIIT Allahabad';
 document.getElementById('foot-right').textContent = ID.email;
 
@@ -460,6 +488,42 @@ document.getElementById('app').innerHTML = `
           <div class="skill-cat">${g.cat}</div>
           <div class="skill-list">${g.items.map(s=>`<span>${s}</span>`).join('')}</div>
         </div>`).join('')}
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow"><b>§5</b> CONTACT</div>
+    <h2 class="sec-title display">Get in touch</h2>
+    <div class="contact-box reveal">
+      <div class="contact-line">For research collaborations, internships, or anything in between —</div>
+      <a class="contact-email" href="mailto:${ID.email}">${ID.email}</a>
+      <div class="contact-actions">
+        <a class="btn btn-ink" href="mailto:${ID.email}">Send an email</a>
+        <button class="btn btn-line" id="copy-email">Copy address</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="game">
+  <div class="wrap">
+    <div class="eyebrow"><b>§6</b> WHILE YOU'RE HERE</div>
+    <h2 class="sec-title display">Bridge the Gap</h2>
+    <div class="game-panel reveal">
+      <div class="game-head">
+        <span>my research, as a game — connect philosophy to AI</span>
+        <div class="game-hud">
+          <span>bridges <b id="g-score">0</b></span>
+          <span>time <b id="g-time">30</b>s</span>
+          <span>best <b id="g-best">0</b></span>
+        </div>
+      </div>
+      <canvas id="gamecanvas"></canvas>
+      <div class="game-foot">
+        <span>click a <span style="color:var(--red)">red</span> node, then a <span style="color:var(--blue)">blue</span> node to bridge them · same colors break the streak</span>
+        <button id="game-restart">restart</button>
+      </div>
     </div>
   </div>
 </section>
@@ -605,6 +669,182 @@ document.getElementById('app').innerHTML = `
       ctx.fillText(n.label, n.x+n.r+5, n.y+4);
       ctx.globalAlpha = 1;
     }
+  }
+
+  (function loop(){ step(); draw(); requestAnimationFrame(loop); })();
+})();
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  CONTACT — copy email                                          ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+document.getElementById('copy-email').addEventListener('click', function(){
+  navigator.clipboard.writeText(ID.email).then(()=>{
+    this.textContent = 'Copied ✓';
+    setTimeout(()=>this.textContent='Copy address', 1600);
+  });
+});
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  MINI GAME — "Bridge the Gap"                                  ║
+   ║  Click a red (philosophy) node, then a blue (AI) node to       ║
+   ║  build a bridge. 30 seconds. Same-color picks break the combo. ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+(function(){
+  const GAME = {
+    duration: 30,            // seconds per round
+    nodeCount: 7,            // nodes PER colour on screen
+    philWords: ["Anumana","Maya","Vyapti","Dialectic","Pramana","Tarka","Ahimsa","Upamana","Shabda","Arthapatti"],
+    aiWords:   ["RAG","LoRA","Bayes","Attention","Embedding","SPARQL","Gradient","Token","Reward","Inference"]
+  };
+
+  const canvas = document.getElementById('gamecanvas');
+  const ctx = canvas.getContext('2d');
+  const css = getComputedStyle(document.documentElement);
+  const RED  = css.getPropertyValue('--red').trim();
+  const BLUE = css.getPropertyValue('--blue').trim();
+  const INK  = '#17171c';
+
+  const elScore = document.getElementById('g-score');
+  const elTime  = document.getElementById('g-time');
+  const elBest  = document.getElementById('g-best');
+
+  let W,H,DPR;
+  function resize(){
+    DPR = Math.min(devicePixelRatio||1,2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W*DPR; canvas.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  resize(); addEventListener('resize', resize);
+
+  let orbs=[], bridges=[], picked=null, score=0, timeLeft=GAME.duration,
+      running=false, started=false, timerId=null, flash=0;
+  let best = 0;
+
+  function randWord(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+  function spawnOrb(type){
+    return {
+      type,
+      label: randWord(type==='phil' ? GAME.philWords : GAME.aiWords),
+      x: 40+Math.random()*(W-80),
+      y: 40+Math.random()*(H-80),
+      vx:(Math.random()-0.5)*1.1,
+      vy:(Math.random()-0.5)*1.1,
+      r: 11, pop: 0
+    };
+  }
+
+  function reset(){
+    orbs=[]; bridges=[]; picked=null; score=0; timeLeft=GAME.duration; flash=0;
+    for(let i=0;i<GAME.nodeCount;i++){ orbs.push(spawnOrb('phil')); orbs.push(spawnOrb('ai')); }
+    elScore.textContent=0; elTime.textContent=GAME.duration;
+    running=true; started=true;
+    clearInterval(timerId);
+    timerId = setInterval(()=>{
+      timeLeft--;
+      elTime.textContent = timeLeft;
+      if(timeLeft<=0){
+        running=false; clearInterval(timerId);
+        best = Math.max(best, score);
+        elBest.textContent = best;
+      }
+    },1000);
+  }
+
+  document.getElementById('game-restart').addEventListener('click', reset);
+
+  canvas.addEventListener('click', e=>{
+    if(!started){ reset(); return; }
+    if(!running){ reset(); return; }
+    const r=canvas.getBoundingClientRect();
+    const x=e.clientX-r.left, y=e.clientY-r.top;
+    let hit=null;
+    for(const o of orbs){
+      const dx=o.x-x, dy=o.y-y;
+      if(dx*dx+dy*dy < (o.r+8)*(o.r+8)){ hit=o; break; }
+    }
+    if(!hit) return;
+    if(!picked){ picked=hit; return; }
+    if(hit===picked){ picked=null; return; }
+    if(hit.type===picked.type){
+      flash = 8;                       // same colour — break
+      picked = null;
+      return;
+    }
+    // valid bridge!
+    bridges.push({x1:picked.x,y1:picked.y,x2:hit.x,y2:hit.y,life:40});
+    picked.pop = 1; hit.pop = 1;       // mark for respawn
+    score++; elScore.textContent = score;
+    picked=null;
+  });
+
+  function step(){
+    for(const o of orbs){
+      if(o.pop>0){
+        o.pop+=0.12;
+        if(o.pop>=2){ Object.assign(o, spawnOrb(o.type)); }
+        continue;
+      }
+      o.x+=o.vx; o.y+=o.vy;
+      if(o.x<26||o.x>W-26) o.vx*=-1;
+      if(o.y<26||o.y>H-26) o.vy*=-1;
+    }
+    bridges = bridges.filter(b=>--b.life>0);
+    if(flash>0) flash--;
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    if(flash>0){ ctx.fillStyle='rgba(179,56,44,0.08)'; ctx.fillRect(0,0,W,H); }
+
+    // fading bridges
+    for(const b of bridges){
+      ctx.globalAlpha = Math.min(1, b.life/20);
+      ctx.strokeStyle = INK; ctx.lineWidth=1.6;
+      ctx.beginPath(); ctx.moveTo(b.x1,b.y1); ctx.lineTo(b.x2,b.y2); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    // orbs
+    ctx.font='400 10px "IBM Plex Mono", monospace';
+    ctx.textAlign='center';
+    for(const o of orbs){
+      const scale = o.pop>0 ? Math.max(0, 1-(o.pop-1)) : 1;
+      const rr = o.r*scale;
+      if(rr<=0.5) continue;
+      ctx.fillStyle = o.type==='phil' ? RED : BLUE;
+      ctx.beginPath(); ctx.arc(o.x,o.y,rr,0,7); ctx.fill();
+      if(o===picked){
+        ctx.strokeStyle=INK; ctx.lineWidth=2.5;
+        ctx.beginPath(); ctx.arc(o.x,o.y,rr+5,0,7); ctx.stroke();
+      } else {
+        ctx.strokeStyle='#fff'; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.arc(o.x,o.y,rr,0,7); ctx.stroke();
+      }
+      ctx.fillStyle=INK;
+      ctx.fillText(o.label, o.x, o.y-rr-6);
+    }
+    ctx.textAlign='left';
+
+    // overlays
+    if(!started){
+      overlay('BRIDGE THE GAP','click anywhere to start');
+    } else if(!running){
+      overlay(`${score} BRIDGES BUILT`, 'click anywhere to play again');
+    }
+  }
+
+  function overlay(big, small){
+    ctx.fillStyle='rgba(250,250,247,0.88)';
+    ctx.fillRect(0,0,W,H);
+    ctx.textAlign='center';
+    ctx.fillStyle=INK;
+    ctx.font='800 28px "Archivo", sans-serif';
+    ctx.fillText(big, W/2, H/2-8);
+    ctx.font='400 12px "IBM Plex Mono", monospace';
+    ctx.fillStyle='#5c5c66';
+    ctx.fillText(small, W/2, H/2+20);
+    ctx.textAlign='left';
   }
 
   (function loop(){ step(); draw(); requestAnimationFrame(loop); })();
