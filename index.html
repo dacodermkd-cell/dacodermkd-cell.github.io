@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mitul Kumar — NLP & LLM Researcher</title>
+<title>Mitul Kumar - Applied Ontologist & AI Researcher</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 /* ════════════════════════════════════════════════════════════
@@ -147,6 +147,20 @@ h1 em{font-style:normal;color:var(--red)}
 .skill-list{font-size:.95rem}
 .skill-list span:not(:last-child)::after{content:' · ';color:var(--rule)}
 
+/* ════════ READING ════════ */
+.reading-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:28px;margin-top:10px}
+.reading-cat-head{font-family:'IBM Plex Mono',monospace;font-size:.78rem;
+  color:var(--blue);text-transform:uppercase;letter-spacing:.1em;
+  padding-bottom:10px;border-bottom:2px solid var(--ink);margin-bottom:0;
+  display:flex;justify-content:space-between;align-items:baseline}
+.reading-count{color:var(--ink-soft);font-size:.7rem}
+.reading-book{padding:11px 2px;border-bottom:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.book-t{font-size:.9rem;color:var(--ink)}
+.book-t.active{color:var(--red)}
+.book-a{font-family:'IBM Plex Mono',monospace;font-size:.7rem;
+  color:var(--ink-soft);text-align:right;flex-shrink:0;max-width:140px}
+
 /* ── footer ── */
 footer{padding:36px 0;border-top:1px solid var(--rule)}
 .foot{display:flex;justify-content:space-between;
@@ -189,6 +203,7 @@ footer{padding:36px 0;border-top:1px solid var(--rule)}
   .res-card,.proj{grid-template-columns:1fr;gap:10px}
   .skill-row{grid-template-columns:1fr;gap:6px}
   #pgraph{height:380px}
+  .reading-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion: reduce){
   .reveal{transition:none;opacity:1;transform:none}
@@ -205,6 +220,7 @@ footer{padding:36px 0;border-top:1px solid var(--rule)}
       <a href="#research">research</a>
       <a href="#projects">projects</a>
       <a href="#skills">skills</a>
+      <a href="#reading">reading</a>
       <a href="#contact">contact</a>
     </div>
   </div>
@@ -230,16 +246,16 @@ const DATA = {
   /* ── identity ─────────────────────────────────────────────── */
   identity: {
     name: "Mitul Kumar",
-    role: "NLP & LLM RESEARCHER — KNOWLEDGE GRAPHS / ONTOLOGIES / RAG",
+    role: "APPLIED ONTOLOGIST — KNOWLEDGE GRAPHS / PHILOSOPHY-AI / NLP",
     email: "dacodermkd@gmail.com",
     status: "Open to paid remote research internships",
     headline: `I map <em>knowledge</em> into machines.`,
-    description: `M.Tech at <strong>IIIT Allahabad</strong>. I build knowledge-augmented
-      LLM systems — ontology-grounded knowledge graphs, SPARQL-backed retrieval,
-      and LoRA fine-tuning.`
+    description: `M.Tech at <strong>IIIT Allahabad</strong>. I build ontology-grounded AI systems
+      at the intersection of formal knowledge representation, natural language processing,
+      and philosophy of mind.`
   },
 
-  /* ── about: skills-first, technology-first ────────────────── */
+  /* ── about ────────────────────────────────────────────────── */
   about: [
     `I work where <strong>structured knowledge meets language models</strong>. My core craft
      is ontology engineering — designing OWL 2 class hierarchies, object properties, and
@@ -255,13 +271,14 @@ const DATA = {
   ],
 
   links: [
-    { name:"GitHub",      handle:"dacodermkd-cell",      url:"https://github.com/dacodermkd-cell" },
-    { name:"HuggingFace", handle:"scaredmajor7300",      url:"https://huggingface.co/scaredmajor7300" },
-    { name:"LinkedIn",    handle:"mitul-kumar-dayal",    url:"https://www.linkedin.com/in/mitul-kumar-dayal" },
-    { name:"Email",       handle:"dacodermkd@gmail.com", url:"mailto:dacodermkd@gmail.com" }
+    { name:"GitHub",      handle:"dacodermkd-cell",           url:"https://github.com/dacodermkd-cell" },
+    { name:"HuggingFace", handle:"scaredmajor7300",           url:"https://huggingface.co/scaredmajor7300" },
+    { name:"LinkedIn",    handle:"mitul-kumar-dayal",         url:"https://www.linkedin.com/in/mitul-kumar-dayal-0382541b9/" },
+    { name:"Substack",    handle:"intelligenceprojectinitiative", url:"https://substack.com/@intelligenceprojectinitiative" },
+    { name:"Email",       handle:"dacodermkd@gmail.com",      url:"mailto:dacodermkd@gmail.com" }
   ],
 
-  /* ── research: papers + the systems behind them ───────────── */
+  /* ── research ─────────────────────────────────────────────── */
   research: [
     {
       num: "R-01",
@@ -273,7 +290,7 @@ const DATA = {
         model disagreement from genuine text ambiguity.`,
       paper: {
         status: "UNDER REVIEW",
-        venue: "EMNLP 2025 (CORE A*)",
+        venue: "EACL 2026",
         authors: "Mitul Kumar, Sadhana Tiwari, Sonali Agarwal, Naveen Saini"
       },
       stats: ["<b>680+</b> papers processed","<b>308,735</b> raw triples","<b>117K</b> nodes","<b>180K</b> edges"],
@@ -284,8 +301,9 @@ const DATA = {
       title: "Phil-AI",
       subtitle: "Cross-domain ontology bridging philosophy and AI",
       description: `A formally verified OWL 2 DL ontology connecting Western philosophy,
-        Indian epistemology, and AI through five typed bridge properties. Drives a deployed
-        RAG system and a LoRA fine-tuned 14B model trained on ontology-derived instructions.`,
+        Indian epistemology, and AI through five typed bridge properties — including the
+        original relation isAIManifestationFrom. Drives a deployed RAG system and a LoRA
+        fine-tuned 14B model trained on ontology-derived instructions.`,
       paper: {
         status: "IN PREPARATION",
         venue: "IEEE DSAA 2026",
@@ -293,15 +311,29 @@ const DATA = {
       },
       stats: ["<b>1,960</b> triples","<b>188</b> bridge assertions","<b>1,134</b> training examples","loss <b>0.409</b>"],
       links: [
-        { label:"GitHub", url:"https://github.com/dacodermkd-cell/phil-ai" },
-        { label:"Model",  url:"https://huggingface.co/scaredmajor7300/phil-ai-v10" }
+        { label:"Live Demo", url:"https://phil-ai.streamlit.app/" },
+        { label:"GitHub",    url:"https://github.com/dacodermkd-cell" },
+        { label:"Model",     url:"https://huggingface.co/scaredmajor7300/phil-ai-v10" }
       ]
+    },
+    {
+      num: "R-03",
+      title: "LLM Reproducibility",
+      subtitle: "A critical analysis of reproducibility in large language model research",
+      description: `A systematic investigation into reproducibility challenges across LLM research,
+        examining methodological standards, reporting norms, and the structural conditions
+        that impede scientific replication in the field.`,
+      paper: {
+        status: "SUBMITTED",
+        venue: "SIGIR AP",
+        authors: "Mitul Kumar et al."
+      },
+      stats: [],
+      links: []
     }
   ],
 
-  /* ── projects: grouped under subdomains ───────────────────────
-     To add a project: append to a subdomain's `items` array.
-     To add a subdomain: append a new {subdomain, items} object.   */
+  /* ── projects ─────────────────────────────────────────────── */
   projects: [
     {
       subdomain: "Machine Learning",
@@ -330,28 +362,109 @@ const DATA = {
         }
       ]
     },
-    { subdomain: "Big Data",  items: [] },
-    { subdomain: "NLP",       items: [] }
+    {
+  subdomain: "Big Data",
+  items: [
+    {
+      title: "PubMed Spark Pipeline",
+      subtitle: "Streaming biomedical entity ingestion",
+      description: "Spark Structured Streaming job ingesting PubMed RSS feeds, extracting biomedical entities with spaCy, outputting Parquet files schema-aligned to the OMKG pipeline.",
+      stats: ["<b>Spark</b> Structured Streaming","<b>spaCy</b> NER","<b>Parquet</b> output"],
+      links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+    },
+    {
+      title: "OBO Ontology Graph ETL",
+      subtitle: "Gene Ontology & MONDO batch processing",
+      description: "Spark batch job processing Gene Ontology and MONDO OBO files, extracting class hierarchies and outputting graph-ready edge lists for Neo4j ingestion.",
+      stats: ["<b>GO</b> + MONDO ontologies","<b>Neo4j</b> ready","<b>OBO</b> format parsing"],
+      links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+    }
+  ]
+},
+{
+  subdomain: "NLP",
+  items: [
+    {
+      title: "PhiloSearch",
+      subtitle: "Semantic search over philosophy texts",
+      description: "Sentence transformer + FAISS index over Project Gutenberg philosophy texts — Kant, Wittgenstein, Hume. Query by natural language, retrieve grounded philosophical passages. Feeds the Phil-AI knowledge base.",
+      stats: ["<b>FAISS</b> vector index","<b>Sentence Transformers</b>","<b>Gutenberg</b> corpus"],
+      links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+    }
+  ]
+}
   ],
 
+  /* ── skills ───────────────────────────────────────────────── */
   skills: [
     { cat:"Languages",         items:["Python","SQL","C","Java"] },
     { cat:"ML / NLP",          items:["HuggingFace","spaCy","Scikit-learn","TensorFlow","Unsloth"] },
     { cat:"LLMs & RAG",        items:["LoRA / PEFT","RAG pipelines","Groq API","Ollama","GGUF","SFTTrainer"] },
     { cat:"Ontology & SemWeb", items:["OWL 2 DL","Protégé","SPARQL","rdflib","Jena/Fuseki","SKOS","ELK"] },
     { cat:"Data Engineering",  items:["Spark","Hadoop","Hive","Airflow","Kafka"] },
-    { cat:"Tools & Infra",     items:["Git","Linux","Streamlit","Supabase","PostgreSQL","MongoDB"] }
+    { cat:"Tools & Infra",     items:["Git","Linux","Streamlit","Supabase","PostgreSQL","MongoDB"] },
+    { cat:"Qualifications",    items:["GATE Qualified — Data Science & AI"] }
   ],
 
-  /* ── personal graph: a nested tree ─────────────────────────────
-     types: "me" → "cat" (red) → "sub" (hollow red) → "item" (blue)
-     Add anything anywhere by nesting a {label, type, children} node.
-     Ids and edges are generated automatically.                     */
+  /* ── reading ──────────────────────────────────────────────── */
+  reading: [
+    {
+      cat: "Mathematics",
+      books: [
+        { title:"Introduction to Linear Algebra",          author:"Gilbert Strang",            status:"studying" },
+        { title:"Introduction to Probability",             author:"Dimitri Bertsekas",          status:"studying" },
+        { title:"Schaum's Probability and Statistics",     author:"Murray Spiegel et al.",      status:"studied"  },
+        { title:"Schaum's Linear Algebra",                 author:"Seymour Lipschutz",          status:"studied"  }
+      ]
+    },
+    {
+      cat: "Data Science",
+      books: [
+        { title:"Data Mining: Concepts and Techniques",    author:"Han & Kamber",               status:"studied"  }
+      ]
+    },
+    {
+      cat: "Programming",
+      books: [
+        { title:"The C Programming Language",              author:"Kernighan & Ritchie",        status:"studied"  }
+      ]
+    },
+    {
+      cat: "Ontology & Knowledge",
+      books: [
+        { title:"An Introduction to Ontology Engineering", author:"C. Maria Keet",              status:"studying" },
+        { title:"Building Ontologies with Basic Formal Ontology", author:"Arp, Smith & Spear", status:"studying" },
+        { title:"A Semantic Web Primer",                   author:"Antoniou & van Harmelen",    status:"studied"  },
+        { title:"Knowledge: A Very Short Introduction",    author:"Jennifer Nagel",             status:"studied"  }
+      ]
+    },
+    {
+      cat: "Philosophy",
+      books: [
+        { title:"Word and Object",                         author:"W.V.O. Quine",              status:"studying" }
+      ]
+    },
+    {
+      cat: "Fiction",
+      books: [
+        { title:"And Then There Were None",                author:"Agatha Christie",            status:"studied"  },
+        { title:"Murder on the Orient Express",            author:"Agatha Christie",            status:"studied"  },
+        { title:"Great Expectations",                      author:"Charles Dickens",            status:"studied"  },
+        { title:"The Tempest",                             author:"William Shakespeare",        status:"studied"  },
+        { title:"The Merchant of Venice",                  author:"William Shakespeare",        status:"studied"  },
+        { title:"Five on a Treasure Island",               author:"Enid Blyton",               status:"studied"  },
+        { title:"Five Run Away Together",                  author:"Enid Blyton",               status:"studied"  }
+      ]
+    }
+  ],
+
+  /* ── personal graph ───────────────────────────────────────── */
   graph_tree: {
     label: "Mitul Kumar", type: "me", children: [
       { label:"Research", type:"cat", children:[
           { label:"Knowledge Graphs", type:"item" },
-          { label:"Ontologies",       type:"item" }
+          { label:"Ontologies",       type:"item" },
+          { label:"Phil-AI",          type:"item" }
       ]},
       { label:"Projects", type:"cat", children:[
           { label:"Machine Learning", type:"sub", children:[
@@ -360,12 +473,23 @@ const DATA = {
           { label:"Bioinformatics", type:"sub", children:[
               { label:"Triclustering", type:"item" }
           ]},
-          { label:"Big Data", type:"sub", children:[] },
-          { label:"NLP",      type:"sub", children:[] }
+          { label:"Big Data", type:"sub", children:[
+          { label:"PubMed Spark Pipeline", type:"item" },
+          { label:"OBO Ontology ETL",      type:"item" }
+          ]},
+{ label:"NLP", type:"sub", children:[
+    { label:"PhiloSearch", type:"item" }
+]}
       ]},
       { label:"Education", type:"cat", children:[
-          { label:"M.Tech", type:"item" },
-          { label:"B.Tech", type:"item" }
+          { label:"M.Tech IIIT-A", type:"item" },
+          { label:"GATE DSAI",     type:"item" }
+      ]},
+      { label:"Reading", type:"cat", children:[
+          { label:"Mathematics",  type:"sub", children:[] },
+          { label:"Ontology",     type:"sub", children:[] },
+          { label:"Philosophy",   type:"sub", children:[] },
+          { label:"Fiction",      type:"sub", children:[] }
       ]},
       { label:"Skills", type:"cat", children:[
           { label:"RAG",         type:"item" },
@@ -445,8 +569,8 @@ document.getElementById('app').innerHTML = `
           <div class="res-sub">${r.subtitle}</div>
           <p class="res-desc">${r.description}</p>
           <div class="res-paper">${r.paper.authors} — <span class="venue">${r.paper.venue}</span></div>
-          <div class="res-stats">${r.stats.map(s=>`<span>${s}</span>`).join('')}</div>
-          <div class="res-links">${linkHtml(r.links)}</div>
+          ${r.stats.length ? `<div class="res-stats">${r.stats.map(s=>`<span>${s}</span>`).join('')}</div>` : ''}
+          ${r.links.length ? `<div class="res-links">${linkHtml(r.links)}</div>` : ''}
         </div>
       </div>`).join('')}
   </div>
@@ -492,9 +616,34 @@ document.getElementById('app').innerHTML = `
     </div>
   </div>
 </section>
+
+<section id="reading">
+  <div class="wrap">
+    <div class="eyebrow"><b>§5</b> READING</div>
+    <h2 class="sec-title display">What I Read</h2>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft);margin-bottom:28px;">
+      <span style="color:var(--red);">↻</span> currently reading &nbsp;·&nbsp; plain = studied
+    </p>
+    <div class="reading-grid reveal">
+      ${DATA.reading.map(cat=>`
+        <div>
+          <div class="reading-cat-head">
+            <span>${cat.cat}</span>
+            <span class="reading-count">${cat.books.length} book${cat.books.length===1?'':'s'}</span>
+          </div>
+          ${cat.books.map(b=>`
+            <div class="reading-book">
+              <span class="book-t${b.status==='studying'?' active':''}">${b.status==='studying'?'↻ ':''}${b.title}</span>
+              <span class="book-a">${b.author}</span>
+            </div>`).join('')}
+        </div>`).join('')}
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
-    <div class="eyebrow"><b>§5</b> CONTACT</div>
+    <div class="eyebrow"><b>§6</b> CONTACT</div>
     <h2 class="sec-title display">Get in touch</h2>
     <div class="contact-box reveal">
       <div class="contact-line">For research collaborations, internships, or anything in between —</div>
@@ -509,7 +658,7 @@ document.getElementById('app').innerHTML = `
 
 <section id="game">
   <div class="wrap">
-    <div class="eyebrow"><b>§6</b> WHILE YOU'RE HERE</div>
+    <div class="eyebrow"><b>§7</b> WHILE YOU'RE HERE</div>
     <h2 class="sec-title display">Bridge the Gap</h2>
     <div class="game-panel reveal">
       <div class="game-head">
@@ -532,7 +681,6 @@ document.getElementById('app').innerHTML = `
 
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  PERSONAL GRAPH — force layout from DATA.graph_tree.          ║
-   ║  The nested tree is flattened into nodes + edges here.        ║
    ╚══════════════════════════════════════════════════════════════╝ */
 (function(){
   const canvas = document.getElementById('pgraph');
@@ -551,7 +699,6 @@ document.getElementById('app').innerHTML = `
   }
   resize(); addEventListener('resize', resize);
 
-  /* flatten tree → nodes + edges (ids auto-generated) */
   const nodes = [], edges = [];
   (function walk(t, parentIdx){
     const idx = nodes.length;
@@ -687,13 +834,11 @@ document.getElementById('copy-email').addEventListener('click', function(){
 
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  MINI GAME — "Bridge the Gap"                                  ║
-   ║  Click a red (philosophy) node, then a blue (AI) node to       ║
-   ║  build a bridge. 30 seconds. Same-color picks break the combo. ║
    ╚══════════════════════════════════════════════════════════════╝ */
 (function(){
   const GAME = {
-    duration: 30,            // seconds per round
-    nodeCount: 7,            // nodes PER colour on screen
+    duration: 30,
+    nodeCount: 7,
     philWords: ["Anumana","Maya","Vyapti","Dialectic","Pramana","Tarka","Ahimsa","Upamana","Shabda","Arthapatti"],
     aiWords:   ["RAG","LoRA","Bayes","Attention","Embedding","SPARQL","Gradient","Token","Reward","Inference"]
   };
@@ -769,13 +914,12 @@ document.getElementById('copy-email').addEventListener('click', function(){
     if(!picked){ picked=hit; return; }
     if(hit===picked){ picked=null; return; }
     if(hit.type===picked.type){
-      flash = 8;                       // same colour — break
+      flash = 8;
       picked = null;
       return;
     }
-    // valid bridge!
     bridges.push({x1:picked.x,y1:picked.y,x2:hit.x,y2:hit.y,life:40});
-    picked.pop = 1; hit.pop = 1;       // mark for respawn
+    picked.pop = 1; hit.pop = 1;
     score++; elScore.textContent = score;
     picked=null;
   });
@@ -799,14 +943,12 @@ document.getElementById('copy-email').addEventListener('click', function(){
     ctx.clearRect(0,0,W,H);
     if(flash>0){ ctx.fillStyle='rgba(179,56,44,0.08)'; ctx.fillRect(0,0,W,H); }
 
-    // fading bridges
     for(const b of bridges){
       ctx.globalAlpha = Math.min(1, b.life/20);
       ctx.strokeStyle = INK; ctx.lineWidth=1.6;
       ctx.beginPath(); ctx.moveTo(b.x1,b.y1); ctx.lineTo(b.x2,b.y2); ctx.stroke();
       ctx.globalAlpha = 1;
     }
-    // orbs
     ctx.font='400 10px "IBM Plex Mono", monospace';
     ctx.textAlign='center';
     for(const o of orbs){
@@ -827,7 +969,6 @@ document.getElementById('copy-email').addEventListener('click', function(){
     }
     ctx.textAlign='left';
 
-    // overlays
     if(!started){
       overlay('BRIDGE THE GAP','click anywhere to start');
     } else if(!running){
