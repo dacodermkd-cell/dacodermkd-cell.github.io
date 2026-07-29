@@ -6,9 +6,6 @@
 <title>Mitul Kumar - Applied Ontologist & AI Researcher</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-/* ════════════════════════════════════════════════════════════
-   DESIGN TOKENS
-   ════════════════════════════════════════════════════════════ */
 :root{
   --paper:#FAFAF7;
   --paper2:#F2F1EC;
@@ -23,8 +20,6 @@ html{scroll-behavior:smooth}
 body{font-family:'Source Serif 4',serif;background:var(--paper);color:var(--ink);line-height:1.6}
 ::selection{background:var(--red);color:#fff}
 .display{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-0.03em}
-
-/* ── nav ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;
   background:rgba(250,250,247,.92);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--rule)}
@@ -36,8 +31,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;
 .nav-links a{font-family:'IBM Plex Mono',monospace;font-size:.76rem;
   color:var(--ink-soft);text-decoration:none;text-transform:lowercase;transition:color .15s}
 .nav-links a:hover{color:var(--ink)}
-
-/* ── layout ── */
 .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
 section{padding:90px 0;border-bottom:1px solid var(--rule)}
 section:last-of-type{border-bottom:none}
@@ -46,8 +39,6 @@ section:last-of-type{border-bottom:none}
   margin-bottom:14px;display:flex;align-items:center;gap:12px}
 .eyebrow b{color:var(--red);font-weight:500}
 .sec-title{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:36px;line-height:1.15}
-
-/* ════════ HERO ════════ */
 #hero{padding:150px 0 70px;border-bottom:1px solid var(--rule)}
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .hero-status{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--ink-soft);
@@ -68,8 +59,6 @@ h1 em{font-style:normal;color:var(--red)}
 .btn-ink:hover{transform:translateY(-1px);box-shadow:3px 3px 0 var(--red)}
 .btn-line{border:1px solid var(--ink);color:var(--ink)}
 .btn-line:hover{transform:translateY(-1px);box-shadow:3px 3px 0 var(--blue)}
-
-/* graph panel */
 .graph-panel{border:1px solid var(--ink);border-radius:4px;background:#fff;
   overflow:hidden;box-shadow:6px 6px 0 var(--paper2)}
 .graph-head{display:flex;justify-content:space-between;align-items:center;
@@ -81,11 +70,9 @@ h1 em{font-style:normal;color:var(--red)}
 .lg.r i{background:var(--red)}
 .lg.s i{background:#fff;border:2px solid var(--red)}
 .lg.b i{background:var(--blue)}
-#pgraph{display:block;width:100%;height:460px}
+#pgraph{display:block;width:100%;height:580px}
 .graph-foot{padding:8px 14px;border-top:1px solid var(--rule);
   font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink-soft)}
-
-/* ════════ ABOUT ════════ */
 .about-cols{display:grid;grid-template-columns:1.5fr 1fr;gap:56px}
 .about-body p{margin-bottom:18px;color:var(--ink-soft);font-size:1.03rem}
 .about-body p:first-child::first-letter{font-family:'Archivo',sans-serif;font-weight:800;
@@ -98,8 +85,6 @@ h1 em{font-style:normal;color:var(--red)}
 .contact-list a:hover{padding-left:10px}
 .c-name{font-family:'Archivo',sans-serif;font-weight:600;font-size:.9rem;color:var(--ink)}
 .c-handle{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--ink-soft)}
-
-/* ════════ RESEARCH ════════ */
 .res-card{border:1px solid var(--ink);border-radius:4px;background:#fff;
   padding:34px;margin-bottom:22px;display:grid;grid-template-columns:130px 1fr;gap:30px}
 .res-status{font-family:'IBM Plex Mono',monospace;font-size:.7rem;line-height:1.55;color:var(--red)}
@@ -113,8 +98,6 @@ h1 em{font-style:normal;color:var(--red)}
   display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:16px}
 .res-stats b{color:var(--red);font-weight:500}
 .res-links{display:flex;gap:18px}
-
-/* ════════ PROJECTS ════════ */
 .subdomain{margin-bottom:40px}
 .subdomain-head{font-family:'IBM Plex Mono',monospace;font-size:.78rem;
   color:var(--blue);text-transform:uppercase;letter-spacing:.1em;
@@ -137,8 +120,6 @@ h1 em{font-style:normal;color:var(--red)}
 .plink:hover{border-color:var(--red)}
 .subdomain-empty{font-family:'IBM Plex Mono',monospace;font-size:.74rem;
   color:var(--ink-soft);padding:18px 2px;border-bottom:1px solid var(--rule)}
-
-/* ════════ SKILLS ════════ */
 .skill-rows{border-top:2px solid var(--ink)}
 .skill-row{display:grid;grid-template-columns:220px 1fr;gap:24px;
   padding:18px 2px;border-bottom:1px solid var(--rule);align-items:baseline}
@@ -146,8 +127,6 @@ h1 em{font-style:normal;color:var(--red)}
   text-transform:uppercase;letter-spacing:.08em}
 .skill-list{font-size:.95rem}
 .skill-list span:not(:last-child)::after{content:' · ';color:var(--rule)}
-
-/* ════════ READING ════════ */
 .reading-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:28px;margin-top:10px}
 .reading-cat-head{font-family:'IBM Plex Mono',monospace;font-size:.78rem;
   color:var(--blue);text-transform:uppercase;letter-spacing:.1em;
@@ -160,13 +139,9 @@ h1 em{font-style:normal;color:var(--red)}
 .book-t.active{color:var(--red)}
 .book-a{font-family:'IBM Plex Mono',monospace;font-size:.7rem;
   color:var(--ink-soft);text-align:right;flex-shrink:0;max-width:140px}
-
-/* ── footer ── */
 footer{padding:36px 0;border-top:1px solid var(--rule)}
 .foot{display:flex;justify-content:space-between;
   font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--ink-soft)}
-
-/* ════════ CONTACT ════════ */
 .contact-box{border:1px solid var(--ink);border-radius:4px;background:#fff;
   box-shadow:6px 6px 0 var(--paper2);padding:44px;text-align:center}
 .contact-line{font-size:1.05rem;color:var(--ink-soft);margin-bottom:22px}
@@ -177,8 +152,6 @@ footer{padding:36px 0;border-top:1px solid var(--rule)}
 .contact-email:hover{color:var(--red)}
 .contact-actions{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 #copy-email{cursor:pointer;background:none}
-
-/* ════════ MINI GAME ════════ */
 .game-panel{border:1px solid var(--ink);border-radius:4px;background:#fff;
   overflow:hidden;box-shadow:6px 6px 0 var(--paper2)}
 .game-head{display:flex;justify-content:space-between;align-items:center;
@@ -194,15 +167,13 @@ footer{padding:36px 0;border-top:1px solid var(--rule)}
   border:1px solid var(--ink);background:#fff;color:var(--ink);
   padding:4px 12px;border-radius:3px;cursor:pointer;transition:box-shadow .15s}
 #game-restart:hover{box-shadow:2px 2px 0 var(--red)}
-
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
 .reveal.in{opacity:1;transform:none}
-
 @media(max-width:880px){
   .hero-grid,.about-cols{grid-template-columns:1fr}
   .res-card,.proj{grid-template-columns:1fr;gap:10px}
   .skill-row{grid-template-columns:1fr;gap:6px}
-  #pgraph{height:380px}
+  #pgraph{height:460px}
   .reading-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion: reduce){
@@ -236,14 +207,8 @@ footer{padding:36px 0;border-top:1px solid var(--rule)}
 </footer>
 
 <script>
-/* ╔══════════════════════════════════════════════════════════════╗
-   ║  PORTFOLIO DATA                                               ║
-   ║  Everything on the page is generated from this object.        ║
-   ║  Edit here only — the render code below never needs to change.║
-   ╚══════════════════════════════════════════════════════════════╝ */
 const DATA = {
 
-  /* ── identity ─────────────────────────────────────────────── */
   identity: {
     name: "Mitul Kumar",
     role: "APPLIED ONTOLOGIST — KNOWLEDGE GRAPHS / PHILOSOPHY-AI / NLP",
@@ -255,7 +220,6 @@ const DATA = {
       and philosophy of mind.`
   },
 
-  /* ── about ────────────────────────────────────────────────── */
   about: [
     `I work where <strong>structured knowledge meets language models</strong>. My core craft
      is ontology engineering: designing OWL 2 class hierarchies, object properties, and
@@ -271,14 +235,13 @@ const DATA = {
   ],
 
   links: [
-    { name:"GitHub",      handle:"dacodermkd-cell",           url:"https://github.com/dacodermkd-cell" },
-    { name:"HuggingFace", handle:"scaredmajor7300",           url:"https://huggingface.co/scaredmajor7300" },
-    { name:"LinkedIn",    handle:"mitul-kumar-dayal",         url:"https://www.linkedin.com/in/mitul-kumar-dayal-0382541b9/" },
+    { name:"GitHub",      handle:"dacodermkd-cell",               url:"https://github.com/dacodermkd-cell" },
+    { name:"HuggingFace", handle:"scaredmajor7300",               url:"https://huggingface.co/scaredmajor7300" },
+    { name:"LinkedIn",    handle:"mitul-kumar-dayal",             url:"https://www.linkedin.com/in/mitul-kumar-dayal-0382541b9/" },
     { name:"Substack",    handle:"intelligenceprojectinitiative", url:"https://substack.com/@intelligenceprojectinitiative" },
-    { name:"Email",       handle:"dacodermkd@gmail.com",      url:"mailto:dacodermkd@gmail.com" }
+    { name:"Email",       handle:"dacodermkd@gmail.com",          url:"mailto:dacodermkd@gmail.com" }
   ],
 
-  /* ── research ─────────────────────────────────────────────── */
   research: [
     {
       num: "R-01",
@@ -333,7 +296,6 @@ const DATA = {
     }
   ],
 
-  /* ── projects ─────────────────────────────────────────────── */
   projects: [
     {
       subdomain: "Machine Learning",
@@ -363,41 +325,40 @@ const DATA = {
       ]
     },
     {
-  subdomain: "Big Data",
-  items: [
-    {
-      title: "PubMed Spark Pipeline",
-      subtitle: "Streaming biomedical entity ingestion",
-      description: "Spark Structured Streaming job ingesting PubMed RSS feeds, extracting biomedical entities with spaCy, outputting Parquet files schema-aligned to the OMKG pipeline.",
-      stats: ["<b>Spark</b> Structured Streaming","<b>spaCy</b> NER","<b>Parquet</b> output"],
-      links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+      subdomain: "Big Data",
+      items: [
+        {
+          title: "PubMed Spark Pipeline",
+          subtitle: "Streaming biomedical entity ingestion",
+          description: "Spark Structured Streaming job ingesting PubMed RSS feeds, extracting biomedical entities with spaCy, outputting Parquet files schema-aligned to the OMKG pipeline.",
+          stats: ["<b>Spark</b> Structured Streaming","<b>spaCy</b> NER","<b>Parquet</b> output"],
+          links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+        },
+        {
+          title: "OBO Ontology Graph ETL",
+          subtitle: "Gene Ontology & MONDO batch processing",
+          description: "Spark batch job processing Gene Ontology and MONDO OBO files, extracting class hierarchies and outputting graph-ready edge lists for Neo4j ingestion.",
+          stats: ["<b>GO</b> + MONDO ontologies","<b>Neo4j</b> ready","<b>OBO</b> format parsing"],
+          links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+        }
+      ]
     },
     {
-      title: "OBO Ontology Graph ETL",
-      subtitle: "Gene Ontology & MONDO batch processing",
-      description: "Spark batch job processing Gene Ontology and MONDO OBO files, extracting class hierarchies and outputting graph-ready edge lists for Neo4j ingestion.",
-      stats: ["<b>GO</b> + MONDO ontologies","<b>Neo4j</b> ready","<b>OBO</b> format parsing"],
-      links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+      subdomain: "NLP",
+      items: [
+        {
+          title: "PhiloSearch",
+          subtitle: "Semantic search over philosophy texts",
+          description: "Sentence transformer + FAISS index over Project Gutenberg philosophy texts — Kant, Wittgenstein, Hume. Query by natural language, retrieve grounded philosophical passages. Feeds the Phil-AI knowledge base.",
+          stats: ["<b>FAISS</b> vector index","<b>Sentence Transformers</b>","<b>Gutenberg</b> corpus"],
+          links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
+        }
+      ]
     }
-  ]
-},
-{
-  subdomain: "NLP",
-  items: [
-    {
-      title: "PhiloSearch",
-      subtitle: "Semantic search over philosophy texts",
-      description: "Sentence transformer + FAISS index over Project Gutenberg philosophy texts — Kant, Wittgenstein, Hume. Query by natural language, retrieve grounded philosophical passages. Feeds the Phil-AI knowledge base.",
-      stats: ["<b>FAISS</b> vector index","<b>Sentence Transformers</b>","<b>Gutenberg</b> corpus"],
-      links: [ { label:"GitHub", url:"https://github.com/dacodermkd-cell" } ]
-    }
-  ]
-}
   ],
 
-  /* ── skills ───────────────────────────────────────────────── */
   skills: [
-    { cat:"Languages", items:["Python","JavaScript","SQL","C","Java"] },
+    { cat:"Languages",         items:["Python","JavaScript","SQL","C","Java"] },
     { cat:"ML / NLP",          items:["HuggingFace","spaCy","Scikit-learn","TensorFlow","Unsloth"] },
     { cat:"LLMs & RAG",        items:["LoRA / PEFT","RAG pipelines","Groq API","Ollama","GGUF","SFTTrainer"] },
     { cat:"Ontology & SemWeb", items:["OWL 2 DL","Protégé","SPARQL","rdflib","Jena/Fuseki","SKOS","ELK"] },
@@ -406,59 +367,57 @@ const DATA = {
     { cat:"Qualifications",    items:["GATE Qualified — Data Science & AI"] }
   ],
 
-  /* ── reading ──────────────────────────────────────────────── */
   reading: [
     {
       cat: "Mathematics",
       books: [
-        { title:"Introduction to Linear Algebra",          author:"Gilbert Strang",            status:"studying" },
-        { title:"Introduction to Probability",             author:"Dimitri Bertsekas",          status:"studying" },
-        { title:"Schaum's Probability and Statistics",     author:"Murray Spiegel et al.",      status:"studied"  },
-        { title:"Schaum's Linear Algebra",                 author:"Seymour Lipschutz",          status:"studied"  }
+        { title:"Introduction to Linear Algebra",          author:"Gilbert Strang",           status:"studying" },
+        { title:"Introduction to Probability",             author:"Dimitri Bertsekas",         status:"studying" },
+        { title:"Schaum's Probability and Statistics",     author:"Murray Spiegel et al.",     status:"studied"  },
+        { title:"Schaum's Linear Algebra",                 author:"Seymour Lipschutz",         status:"studied"  }
       ]
     },
     {
       cat: "Data Science",
       books: [
-        { title:"Data Mining: Concepts and Techniques",    author:"Han & Kamber",               status:"studied"  }
+        { title:"Data Mining: Concepts and Techniques",    author:"Han & Kamber",              status:"studied"  }
       ]
     },
     {
       cat: "Programming",
       books: [
-        { title:"The C Programming Language",              author:"Kernighan & Ritchie",        status:"studied"  }
+        { title:"The C Programming Language",              author:"Kernighan & Ritchie",       status:"studied"  }
       ]
     },
     {
       cat: "Ontology & Knowledge",
       books: [
-        { title:"An Introduction to Ontology Engineering", author:"C. Maria Keet",              status:"studying" },
-        { title:"Building Ontologies with Basic Formal Ontology", author:"Arp, Smith & Spear", status:"studying" },
-        { title:"A Semantic Web Primer",                   author:"Antoniou & van Harmelen",    status:"studied"  },
-        { title:"Knowledge: A Very Short Introduction",    author:"Jennifer Nagel",             status:"studied"  }
+        { title:"An Introduction to Ontology Engineering", author:"C. Maria Keet",             status:"studying" },
+        { title:"Building Ontologies with Basic Formal Ontology", author:"Arp, Smith & Spear",status:"studying" },
+        { title:"A Semantic Web Primer",                   author:"Antoniou & van Harmelen",   status:"studied"  },
+        { title:"Knowledge: A Very Short Introduction",    author:"Jennifer Nagel",            status:"studied"  }
       ]
     },
     {
       cat: "Philosophy",
       books: [
-        { title:"Word and Object",                         author:"W.V.O. Quine",              status:"studying" }
+        { title:"Word and Object",                         author:"W.V.O. Quine",             status:"studying" }
       ]
     },
     {
       cat: "Fiction",
       books: [
-        { title:"And Then There Were None",                author:"Agatha Christie",            status:"studied"  },
-        { title:"Murder on the Orient Express",            author:"Agatha Christie",            status:"studied"  },
-        { title:"Great Expectations",                      author:"Charles Dickens",            status:"studied"  },
-        { title:"The Tempest",                             author:"William Shakespeare",        status:"studied"  },
-        { title:"The Merchant of Venice",                  author:"William Shakespeare",        status:"studied"  },
-        { title:"Five on a Treasure Island",               author:"Enid Blyton",               status:"studied"  },
-        { title:"Five Run Away Together",                  author:"Enid Blyton",               status:"studied"  }
+        { title:"And Then There Were None",                author:"Agatha Christie",           status:"studied"  },
+        { title:"Murder on the Orient Express",            author:"Agatha Christie",           status:"studied"  },
+        { title:"Great Expectations",                      author:"Charles Dickens",           status:"studied"  },
+        { title:"The Tempest",                             author:"William Shakespeare",       status:"studied"  },
+        { title:"The Merchant of Venice",                  author:"William Shakespeare",       status:"studied"  },
+        { title:"Five on a Treasure Island",               author:"Enid Blyton",              status:"studied"  },
+        { title:"Five Run Away Together",                  author:"Enid Blyton",              status:"studied"  }
       ]
     }
   ],
 
-  /* ── personal graph ───────────────────────────────────────── */
   graph_tree: {
     label: "Mitul Kumar", type: "me", children: [
       { label:"Research", type:"cat", children:[
@@ -474,16 +433,19 @@ const DATA = {
               { label:"Triclustering", type:"item" }
           ]},
           { label:"Big Data", type:"sub", children:[
-          { label:"PubMed Spark Pipeline", type:"item" },
-          { label:"OBO Ontology ETL",      type:"item" }
+              { label:"PubMed Spark Pipeline", type:"item" },
+              { label:"OBO Ontology ETL",      type:"item" }
           ]},
-{ label:"NLP", type:"sub", children:[
-    { label:"PhiloSearch", type:"item" }
-]}
+          { label:"NLP", type:"sub", children:[
+              { label:"PhiloSearch", type:"item" }
+          ]}
       ]},
       { label:"Education", type:"cat", children:[
-          { label:"M.Tech IIIT-A", type:"item" },
-          { label:"GATE DSAI",     type:"item" }
+          { label:"M.Tech — IIIT Allahabad",   type:"item" },
+          { label:"B.Tech — IIIT Bhubaneswar", type:"item" },
+          { label:"GATE — DSAI",               type:"item" },
+          { label:"ISC — St. Paul's",          type:"item" },
+          { label:"ICSE — St. Paul's",         type:"item" }
       ]},
       { label:"Reading", type:"cat", children:[
           { label:"Mathematics",  type:"sub", children:[] },
@@ -501,9 +463,6 @@ const DATA = {
   }
 };
 
-/* ╔══════════════════════════════════════════════════════════════╗
-   ║  RENDER — generated from DATA. Do not edit for content.       ║
-   ╚══════════════════════════════════════════════════════════════╝ */
 const ID = DATA.identity;
 document.getElementById('nav-name').textContent = ID.name;
 document.getElementById('foot-left').textContent = '© 2026 '+ID.name+' · IIIT Allahabad';
@@ -679,9 +638,7 @@ document.getElementById('app').innerHTML = `
 </section>
 `;
 
-/* ╔══════════════════════════════════════════════════════════════╗
-   ║  PERSONAL GRAPH — force layout from DATA.graph_tree.          ║
-   ╚══════════════════════════════════════════════════════════════╝ */
+/* ── PERSONAL GRAPH ── */
 (function(){
   const canvas = document.getElementById('pgraph');
   const ctx = canvas.getContext('2d');
@@ -749,8 +706,8 @@ document.getElementById('app').innerHTML = `
         const a=nodes[i], b=nodes[j];
         let dx=b.x-a.x, dy=b.y-a.y;
         let d2=dx*dx+dy*dy || 1;
-        if(d2 < 190*190){
-          const d=Math.sqrt(d2), f=1000/d2;
+        if(d2 < 240*240){
+          const d=Math.sqrt(d2), f=1800/d2;
           dx/=d; dy/=d;
           a.vx-=dx*f; a.vy-=dy*f;
           b.vx+=dx*f; b.vy+=dy*f;
@@ -760,7 +717,7 @@ document.getElementById('app').innerHTML = `
     for(const e of edges){
       let dx=e.b.x-e.a.x, dy=e.b.y-e.a.y;
       const d=Math.sqrt(dx*dx+dy*dy)||1;
-      const f=(d-105)*0.00006*d;
+      const f=(d-120)*0.00005*d;
       dx/=d; dy/=d;
       e.a.vx+=dx*f; e.a.vy+=dy*f;
       e.b.vx-=dx*f; e.b.vy-=dy*f;
@@ -822,9 +779,7 @@ document.getElementById('app').innerHTML = `
   (function loop(){ step(); draw(); requestAnimationFrame(loop); })();
 })();
 
-/* ╔══════════════════════════════════════════════════════════════╗
-   ║  CONTACT — copy email                                          ║
-   ╚══════════════════════════════════════════════════════════════╝ */
+/* ── COPY EMAIL ── */
 document.getElementById('copy-email').addEventListener('click', function(){
   navigator.clipboard.writeText(ID.email).then(()=>{
     this.textContent = 'Copied ✓';
@@ -832,9 +787,7 @@ document.getElementById('copy-email').addEventListener('click', function(){
   });
 });
 
-/* ╔══════════════════════════════════════════════════════════════╗
-   ║  MINI GAME — "Bridge the Gap"                                  ║
-   ╚══════════════════════════════════════════════════════════════╝ */
+/* ── MINI GAME ── */
 (function(){
   const GAME = {
     duration: 30,
@@ -942,7 +895,6 @@ document.getElementById('copy-email').addEventListener('click', function(){
   function draw(){
     ctx.clearRect(0,0,W,H);
     if(flash>0){ ctx.fillStyle='rgba(179,56,44,0.08)'; ctx.fillRect(0,0,W,H); }
-
     for(const b of bridges){
       ctx.globalAlpha = Math.min(1, b.life/20);
       ctx.strokeStyle = INK; ctx.lineWidth=1.6;
@@ -968,7 +920,6 @@ document.getElementById('copy-email').addEventListener('click', function(){
       ctx.fillText(o.label, o.x, o.y-rr-6);
     }
     ctx.textAlign='left';
-
     if(!started){
       overlay('BRIDGE THE GAP','click anywhere to start');
     } else if(!running){
@@ -992,7 +943,6 @@ document.getElementById('copy-email').addEventListener('click', function(){
   (function loop(){ step(); draw(); requestAnimationFrame(loop); })();
 })();
 
-/* reveal on scroll */
 const io = new IntersectionObserver(es=>{
   es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
 },{threshold:.1});
